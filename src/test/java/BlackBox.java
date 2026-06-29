@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * looking at the implementation.
  *
  */
-public class DummyBlackBoxSample {
-
+public class BlackBox {
+        private static final double MIN_RANGE = 0.01;
         /**
          * SAMPLE TEST X: Dummy test.
          */
@@ -28,7 +28,7 @@ public class DummyBlackBoxSample {
         public void testDummy() {
                 double dummy = 0.0;
                 // Dummy Test
-                assertEquals(0.0, dummy, 0.01,
+                assertEquals(0.0, dummy, MIN_RANGE,
                         "Expected successful (0.0) for Dummy Test");
         }
 
