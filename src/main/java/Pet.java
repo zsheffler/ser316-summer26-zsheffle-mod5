@@ -151,7 +151,7 @@ abstract class Pet {
     /** set foster
      *  @param 
      */
-    public void foster(){
+    public void foster() {
         state.fosterPet(this);
     }
 
@@ -271,6 +271,9 @@ class Rabbit extends Pet {
 class PetFactory {
     public static Pet createPet(String petType, int id, String name, int age, 
             String healthStatus, String shelterZoneCode, IntakeType intakeType) {
+        System.out.println("Factory creating new Pet " + petType + ".  With id: " + id + ". Named: " + name + ", at " +
+            age + " year(s) old" + "their health is: " + healthStatus + ".  They will be staying at shelter: "
+            + shelterZoneCode + ".  They were found as a(n): " + intakeType);        
         if (petType.equalsIgnoreCase("dog")) {
             return new Dog(id, name, age, healthStatus, shelterZoneCode, intakeType);
         } else if (petType.equalsIgnoreCase("cat")) {

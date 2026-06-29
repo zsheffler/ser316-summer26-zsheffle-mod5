@@ -77,13 +77,12 @@ class AvailableState implements PetState {
 
     @Override
     public void reviewPet(Pet pet) {
-        System.out.println(pet.name + " is under review!");
-        pet.setState(new UnderReviewState());
+        System.out.println(pet.name + " has already been reviewed!");
     }
 
     @Override
     public void clearPet(Pet pet) {
-        System.out.println(pet.name + " has not been reviewed and cannot be adopted yet.");
+        System.out.println(pet.name + " has already been cleared!");
     }
 
     @Override
