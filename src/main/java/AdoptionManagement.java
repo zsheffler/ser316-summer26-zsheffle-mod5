@@ -13,27 +13,6 @@ public class AdoptionManagement {
         System.out.println("Adopter preferences added: " + preferences);
     }
 
-    /** Lists out adoptors preferences */
-    public void displayAllAdopterPreferences() {
-        System.out.println("Current Adopter Preferences:");
-        for (AdopterPreferences preferences : adopterPreferencesList) {
-            System.out.println(preferences);
-        }
-        System.out.println();
-    }
-
-    /** main example code */
-    public static void main(String[] args) {
-        AdoptionManagement adoptionManagement = new AdoptionManagement();
-
-        // Collecting and storing preferences from adopters
-        adoptionManagement.addAdopterPreferences(new AdopterPreferences("Dog", "Medium", "Puppy", "Energetic"));
-        adoptionManagement.addAdopterPreferences(new AdopterPreferences("Cat", "Small", "Adult", "Calm"));
-        
-        // Displaying all adopter preferences
-        adoptionManagement.displayAllAdopterPreferences();
-    }
-
     /**Uses Staffmeber to access their class actions, and a list of pets to filter matches */
     public void matchAdoptersToPets(StaffMember staff, List<Pet> pets) {
         for (AdopterPreferences preferences : adopterPreferencesList) {

@@ -106,13 +106,6 @@ abstract class Pet {
         System.out.println(name + "has been determined to have a " + attitude + " temperment.");
     }
     /**
-     * Set name
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-    /**
      * Set healthStatus
      * @param healthStatus
      */
@@ -155,7 +148,12 @@ abstract class Pet {
     public void adopt() {
         state.adoptPet(this);
     }
-
+    /** set foster
+     *  @param 
+     */
+    public void foster(){
+        state.fosterPet(this);
+    }
 
     @Override
     public String toString() {

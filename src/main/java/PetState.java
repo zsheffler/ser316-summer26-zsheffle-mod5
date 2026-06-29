@@ -129,6 +129,7 @@ class FosterState implements PetState {
     }
 
 }
+
 class AdoptedState implements PetState {
     @Override
     public void intakePet(Pet pet) {
