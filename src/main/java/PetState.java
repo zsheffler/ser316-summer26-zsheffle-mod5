@@ -18,7 +18,7 @@ class IntakeState implements PetState {
 
     @Override
     public void reviewPet(Pet pet) {
-        System.out.println(pet.name + " is being examended.");
+        System.out.println("EVENT: " + pet.name + " is being examended.");
         Random rand = new Random();
         pet.setSize(sizes[rand.nextInt(sizes.length)]);
         pet.setTemperment(temperments[rand.nextInt(temperments.length)]);
@@ -60,7 +60,7 @@ class UnderReviewState implements PetState {
 
     @Override
     public void clearPet(Pet pet) {
-        System.out.println(pet.name + " has been reviewed and is ready to be adopted!");
+        System.out.println("EVENT: " + pet.name + " has been reviewed and is ready to be adopted!");
         pet.setState(new AvailableState());
     }
 
@@ -99,7 +99,7 @@ class AvailableState implements PetState {
 
     @Override
     public void adoptPet(Pet pet) {
-        System.out.println(pet.name + " is now adopted!");
+        System.out.println("EVENT: " + pet.name + " is now adopted!");
         pet.setState(new AdoptedState());
     }
     
@@ -118,7 +118,7 @@ class AvailableState implements PetState {
 class FosterState implements PetState {
     @Override
     public void intakePet(Pet pet) {
-        System.out.println("We are sorry your pet didn't work out.  " + pet.name + " is now in shelter "
+        System.out.println("EVENT: " + "We are sorry your pet didn't work out.  " + pet.name + " is now in shelter "
             + pet.getShelterZoneCode() + "!");
         pet.setState(new IntakeState());
     }
@@ -135,7 +135,7 @@ class FosterState implements PetState {
 
     @Override
     public void adoptPet(Pet pet) {
-        System.out.println(pet.name + " is now adopted!");
+        System.out.println("EVENT: " + pet.name + " is now adopted!");
         pet.setState(new AdoptedState());
     }
 
@@ -153,7 +153,7 @@ class FosterState implements PetState {
 class AdoptedState implements PetState {
     @Override
     public void intakePet(Pet pet) {
-        System.out.println("We are sorry your pet didn't work out.  " + pet.name + " is now in shelter "
+        System.out.println("EVENT: " + "We are sorry your pet didn't work out.  " + pet.name + " is now in shelter "
             + pet.getShelterZoneCode() + "!");
         pet.setState(new IntakeState());
     }

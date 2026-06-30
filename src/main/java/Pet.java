@@ -118,6 +118,7 @@ abstract class Pet {
      * @param state
      */
     public void setState(PetState state) {
+        System.out.println("Cycle occuring");
         this.state = state;
     }
     /**
@@ -125,6 +126,7 @@ abstract class Pet {
      * @param
      */
     public void intake() {
+        System.out.println("Cycle might occur.");
         state.intakePet(this); 
     }
     /**
@@ -132,6 +134,7 @@ abstract class Pet {
      * @param 
      */
     public void review() {
+        System.out.println("Cycle might occur.");
         state.reviewPet(this);
     }
     /**
@@ -139,6 +142,7 @@ abstract class Pet {
      * @param 
      */
     public void clear() {
+        System.out.println("Cycle might occur.");
         state.clearPet(this);
     }
     /**
@@ -146,12 +150,14 @@ abstract class Pet {
      * @param 
      */
     public void adopt() {
+        System.out.println("Cycle might occur.");
         state.adoptPet(this);
     }
     /** set foster
      *  @param 
      */
     public void foster() {
+        System.out.println("Cycle might occur.");
         state.fosterPet(this);
     }
 
@@ -273,8 +279,8 @@ class Rabbit extends Pet {
 class PetFactory {
     public static Pet createPet(String petType, int id, String name, int age, 
             String healthStatus, String shelterZoneCode, IntakeType intakeType) {
-        System.out.println("Factory creating new Pet " + petType + ".  With id: " + id + ". Named: " + name + ", at " +
-            age + " year(s) old.  Their health is: " + healthStatus + ".  They will be staying at shelter: "
+        System.out.println("EVENT: Factory creating new Pet " + petType + ".  With id: " + id + ". Named: " + name + 
+            ", at " + age + " year(s) old.  Their health is: " + healthStatus + ".  They will be staying at shelter: "
             + shelterZoneCode + ".  They were found as a(n): " + intakeType);        
         if (petType.equalsIgnoreCase("dog")) {
             return new Dog(id, name, age, healthStatus, shelterZoneCode, intakeType);

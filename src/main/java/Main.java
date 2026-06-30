@@ -1,5 +1,7 @@
 import java.util.Random;
 public class Main {
+    //here per requirements
+    public String debuggggs;
     /**
      * main an example
      * @param args
@@ -12,13 +14,15 @@ public class Main {
         Random rand = new Random();
         int animalIdCounter = 1;
         AdoptionManagement adoptionManagement = new AdoptionManagement();
+        
 
-        // Collecting and storing preferences from adopters
+        System.out.println("Collecting and storing preferences from adopters");
         adoptionManagement.addAdopterPreferences(new AdopterPreferences("Dog", "medium", "puppy", "energetic"));
         adoptionManagement.addAdopterPreferences(new AdopterPreferences("Cat", "small", "adult", "calm"));
         
+        System.out.println("Creating shelter");
         ShelterManagement shelter = new ShelterManagement();
-        // Adding staff members
+        System.out.println("Adding staff members");
         StaffMember veterinarian = new StaffMember("Dr. Smith", StaffRole.VETERINARIAN);
         shelter.addStaffMember(veterinarian);
         StaffMember technicion = new StaffMember("Alice Johnson", StaffRole.TECHNICIAN);
@@ -26,7 +30,7 @@ public class Main {
         StaffMember counseler = new StaffMember("Bob Brown", StaffRole.COUNSELOR);
         shelter.addStaffMember(counseler);
 
-        // Adding the core animals
+        System.out.println("Adding the core animals");
         shelter.addPet(PetFactory.createPet("Dog", animalIdCounter++, "Bugger", 0,
             "Healthy", "SZ-001", IntakeType.STRAY));
         shelter.addPet(PetFactory.createPet("Cat", animalIdCounter++, "Jerry", MAGIC_AGE_5, 
@@ -37,6 +41,7 @@ public class Main {
             "Healthy", "SZ-001", IntakeType.TRANSFER));
         shelter.addPet(PetFactory.createPet("Rabbit", animalIdCounter++, "Hopper", MAGIC_AGE_2, 
             "Healthy", "SZ-002", IntakeType.SURRENDER));
+        System.out.println("Changing core animals from intake to review to clear to avaiable");
         for (Pet pet : shelter.getPets()) {
             shelter.filterStaffByRole(StaffRole.TECHNICIAN).get(rand.nextInt(
                 shelter.filterStaffByRole(StaffRole.TECHNICIAN).size())).performJob(pet);
@@ -44,7 +49,7 @@ public class Main {
                     shelter.filterStaffByRole(StaffRole.VETERINARIAN).size())).performJob(pet);
         }
 
-        // Allow for new animal arrivals
+        System.out.println("Allow for new animal arrivals");
         shelter.addPet(PetFactory.createPet("Dog", animalIdCounter++, "Hey You", MAGIC_AGE_3, 
             "Healthy", "SZ-001", IntakeType.STRAY));
         shelter.addPet(PetFactory.createPet("Cat", animalIdCounter++, "Wizard", MAGIC_AGE_2, 
@@ -52,13 +57,12 @@ public class Main {
         shelter.addPet(PetFactory.createPet("Rabbit", animalIdCounter++, "Dinner", MAGIC_AGE_1, 
             "Healthy", "SZ-003", IntakeType.TRANSFER));
 
-        // Display all Pets
+        System.out.println("Display all Pets");
         shelter.displayPets();
-        //attempt to adopt animals
         System.out.println("Attempting to match animals");
         adoptionManagement.matchAdoptersToPets(shelter.filterStaffByRole(StaffRole.COUNSELOR).get(rand.nextInt(
             shelter.filterStaffByRole(StaffRole.COUNSELOR).size())), shelter.getPets());
-        // Display all Pets
+        System.out.println("Display all Pets");
         shelter.displayPets();
     }
 }
