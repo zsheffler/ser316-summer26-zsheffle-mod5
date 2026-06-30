@@ -1,23 +1,13 @@
-//import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.params.ParameterizedTest;
-//import org.junit.jupiter.params.provider.MethodSource;
 
-//import java.lang.reflect.Constructor;
-//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Sample Black-Box tests
- * This class demonstrates how to write black-box tests using:
- *
- * Black-box testing focuses on testing the SPECIFICATION WITHOUT
- * looking at the implementation.
+ * White-Box tests
  *
  */
 public class WhiteBox {
@@ -91,13 +81,15 @@ public class WhiteBox {
         @DisplayName("T4: Returning an adopted Pet")
         @Test
         public void testReturningAnAdoptedPetStates() {
-                Pet pet = PetFactory.createPet("Dog", 1, "Bugger", 3, "Healthy", "SZ-001", IntakeType.STRAY);
+                Pet pet = PetFactory.createPet("Dog", MAGIC_ID_1, "Bugger", MAGIC_AGE_3, "Healthy", 
+                        "SZ-001", IntakeType.STRAY);
                 
                 pet.review();
                 pet.clear();
                 pet.adopt();
                 pet.intake();
-                assertEquals(pet.getState().getClass(), IntakeState.class, "Created Pet expected to be in 'IntakeState'");
+                assertEquals(pet.getState().getClass(), IntakeState.class, 
+                        "Created Pet expected to be in 'IntakeState'");
         }
 
         /**
@@ -299,7 +291,7 @@ public class WhiteBox {
         @DisplayName("T14: VETERINARIAN doing their job")
         @Test public void testveterinarianDoingJob() {
                 StaffMember staff = new StaffMember("Dr. Smith", StaffRole.VETERINARIAN);
-                Pet pet = PetFactory.createPet("Dog", 1, "Bugger", 3, "Healthy", 
+                Pet pet = PetFactory.createPet("Dog", MAGIC_ID_1, "Bugger", MAGIC_AGE_3, "Healthy", 
                         "SZ-001", IntakeType.STRAY);
                 pet.review();
                 //clear
@@ -446,7 +438,7 @@ public class WhiteBox {
                 ShelterManagement shelter = new ShelterManagement();
                 shelter.addPet(PetFactory.createPet("Dog", MAGIC_ID_1, "Bugger", MAGIC_AGE_3, "Healthy", 
                         "SZ-001", IntakeType.STRAY));
-                for(Pet pet: shelter.getPets()) {
+                for (Pet pet: shelter.getPets()) {
                         assertEquals(pet.getClass(), Dog.class);
                 }
         }
@@ -458,7 +450,7 @@ public class WhiteBox {
         @Test public void testShealterManagementAddingStaff() {
                 ShelterManagement shelter = new ShelterManagement();
                 shelter.addStaffMember(new StaffMember("Bob Brown", StaffRole.COUNSELOR));
-                for(StaffMember staff: shelter.filterStaffByRole(StaffRole.COUNSELOR)) {
+                for (StaffMember staff: shelter.filterStaffByRole(StaffRole.COUNSELOR)) {
                         assertEquals(staff.getClass(), StaffMember.class);
                 }
         }
@@ -553,7 +545,8 @@ public class WhiteBox {
                 pet1.setTemperment("energetic");
 
                 //attempt to adopt pet1
-                adoptionManagement.matchAdoptersToPets(shelter.filterStaffByRole(StaffRole.COUNSELOR).get(0), shelter.getPets());
+                adoptionManagement.matchAdoptersToPets(shelter.filterStaffByRole(StaffRole.COUNSELOR).get(0), 
+                        shelter.getPets());
                 assertEquals(pet1.getState().getClass(), AdoptedState.class);
                 assertNotEquals(pet2.getState().getClass(), AdoptedState.class);
         }

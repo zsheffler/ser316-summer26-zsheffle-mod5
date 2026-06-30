@@ -5,6 +5,7 @@ interface PetState {
     void clearPet(Pet pet);
     void adoptPet(Pet pet);
     void fosterPet(Pet pet);
+    String toString();
 }
 
 class IntakeState implements PetState {
@@ -39,6 +40,11 @@ class IntakeState implements PetState {
         System.out.println(pet.name + " has not been reviewed and cannot be fostered yet.");
     }
 
+    @Override
+    public String toString() {
+        return "in Intake";
+    }
+
 }
 
 class UnderReviewState implements PetState {
@@ -67,6 +73,12 @@ class UnderReviewState implements PetState {
     public void fosterPet(Pet pet) {
         System.out.println(pet.name + " has not been reviewed and cannot be fostered yet.");
     }
+
+    @Override
+    public String toString() {
+        return "under Review";
+    }
+
 }
 
 class AvailableState implements PetState {
@@ -95,6 +107,11 @@ class AvailableState implements PetState {
     public void fosterPet(Pet pet) {
         System.out.println(pet.name + " is now being fostered.");
         pet.setState(new FosterState());
+    }
+
+    @Override
+    public String toString() {
+        return "is Available";
     }
 }
 
@@ -127,6 +144,10 @@ class FosterState implements PetState {
         System.out.println(pet.name + " is already fostered.");
     }
 
+    @Override
+    public String toString() {
+        return "in Foster care";
+    }
 }
 
 class AdoptedState implements PetState {
@@ -155,5 +176,10 @@ class AdoptedState implements PetState {
     @Override
     public void fosterPet(Pet pet) {
         System.out.println(pet.name + " is already adopted!");
+    }
+
+    @Override
+    public String toString() {
+        return "is Adopted";
     }
 }

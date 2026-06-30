@@ -27,9 +27,9 @@ public class Main {
         shelter.addStaffMember(counseler);
 
         // Adding the core animals
-        shelter.addPet(PetFactory.createPet("Dog", animalIdCounter++, "Bugger", MAGIC_AGE_3,
+        shelter.addPet(PetFactory.createPet("Dog", animalIdCounter++, "Bugger", 0,
             "Healthy", "SZ-001", IntakeType.STRAY));
-        shelter.addPet(PetFactory.createPet("Cat", animalIdCounter++, "Jerry", MAGIC_AGE_2, 
+        shelter.addPet(PetFactory.createPet("Cat", animalIdCounter++, "Jerry", MAGIC_AGE_5, 
             "Sick", "SZ-002", IntakeType.SURRENDER));
         shelter.addPet(PetFactory.createPet("Dog", animalIdCounter++, "Ralf", MAGIC_AGE_5, 
             "Healthy", "SZ-003", IntakeType.STRAY));
@@ -55,7 +55,10 @@ public class Main {
         // Display all Pets
         shelter.displayPets();
         //attempt to adopt animals
+        System.out.println("Attempting to match animals");
         adoptionManagement.matchAdoptersToPets(shelter.filterStaffByRole(StaffRole.COUNSELOR).get(rand.nextInt(
             shelter.filterStaffByRole(StaffRole.COUNSELOR).size())), shelter.getPets());
+        // Display all Pets
+        shelter.displayPets();
     }
 }

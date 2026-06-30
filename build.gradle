@@ -113,7 +113,7 @@ tasks.register('blackBoxTest', Test) {
 
     useJUnitPlatform()
 
-    include '**/CheckoutBlackBoxSample.class'
+    include '**/BlackBox.class'
 
     testLogging {
         events "passed", "skipped", "failed"
@@ -128,7 +128,7 @@ tasks.register('whiteBoxTest', Test) {
 
     useJUnitPlatform()
 
-    include '**/CheckoutWhiteBoxSample.class'
+    include '**/WhiteBox.class'
 
     testLogging {
         events "passed", "skipped", "failed"

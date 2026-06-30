@@ -158,8 +158,10 @@ abstract class Pet {
     @Override
     public String toString() {
         return "Pet [ID=" + id + ", Species=" + getSpecies() + ", Age=" + age + 
-                ", Health Status=" + healthStatus + ", Shelter Zone Code=" + 
-                shelterZoneCode + ", Intake Type=" + intakeType + "]";
+                ", Health Status=" + healthStatus + ", Size=" + size + ", temperment=" + temperament +
+                ", Shelter Zone Code=" + shelterZoneCode + ", Intake Type=" + intakeType + 
+                ", Pet State=" + state + "]";
+
     }
     //abstract methods
     /**
@@ -272,12 +274,14 @@ class PetFactory {
     public static Pet createPet(String petType, int id, String name, int age, 
             String healthStatus, String shelterZoneCode, IntakeType intakeType) {
         System.out.println("Factory creating new Pet " + petType + ".  With id: " + id + ". Named: " + name + ", at " +
-            age + " year(s) old" + "their health is: " + healthStatus + ".  They will be staying at shelter: "
+            age + " year(s) old.  Their health is: " + healthStatus + ".  They will be staying at shelter: "
             + shelterZoneCode + ".  They were found as a(n): " + intakeType);        
         if (petType.equalsIgnoreCase("dog")) {
             return new Dog(id, name, age, healthStatus, shelterZoneCode, intakeType);
         } else if (petType.equalsIgnoreCase("cat")) {
             return new Cat(id, name, age, healthStatus, shelterZoneCode, intakeType);
+        } else if (petType.equalsIgnoreCase("rabbit")) {
+            return new Rabbit(id, name, age, healthStatus, shelterZoneCode, intakeType);
         } else {
             throw new IllegalArgumentException("Unknown pet type.");
         }
